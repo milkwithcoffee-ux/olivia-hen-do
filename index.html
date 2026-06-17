@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olivia's Brighton Hen Do</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0a0a14;
+    --card:     #13131f;
+    --card2:    #1a1a2a;
+    --border:   rgba(160, 80, 220, 0.18);
+    --purple:   #a855f7;
+    --purple-d: #7c3aed;
+    --rose:     #e040a0;
+    --rose-d:   #a0206a;
+    --gold:     #d4a840;
+    --gold-d:   #8a6818;
+    --teal:     #2dd4bf;
+    --teal-d:   #0e7a70;
+    --text:     #ede8ff;
+    --sub:      #8878aa;
+    --faint:    #201a30;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 15% 10%, rgba(120, 40, 200, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(180, 20, 80, 0.10) 0%, transparent 55%);
+    min-height: 100vh;
+    padding: 32px 16px 60px;
+    color: var(--text);
+  }
+
+  .wrap { max-width: 620px; margin: 0 auto; }
+
+  /* ── Header ─────────────────────────────── */
+  .header { text-align: center; margin-bottom: 40px; }
+
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--purple-d), var(--rose-d));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #c084fc, #f472b6, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .header .where {
+    font-size: 12.5px;
+    color: var(--sub);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .ornament {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 10px;
+    opacity: 0.55;
+    margin: 22px 0 30px;
+    color: var(--purple);
+  }
+
+  /* ── Timeline ────────────────────────────── */
+  .timeline { position: relative; padding-left: 50px; margin-bottom: 32px; }
+
+  .timeline-rail {
+    position: absolute;
+    left: 18px; top: 14px; bottom: 14px; width: 2px;
+    background: linear-gradient(to bottom, var(--purple), var(--rose), var(--purple));
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  .event { position: relative; margin-bottom: 14px; }
+
+  .dot {
+    position: absolute;
+    left: -39px; top: 16px;
+    width: 24px; height: 24px;
+    background: var(--card);
+    border: 2px solid var(--purple);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.35);
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 15px 18px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: rgba(168, 85, 247, 0.35); }
+
+  .ev-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .ev-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .ev-desc {
+    font-size: 12.5px;
+    color: var(--sub);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 11px; border-radius: 20px;
+    font-size: 11.5px; font-weight: 500;
+  }
+
+  .pill-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+  .pill-rose   { background: rgba(224, 64, 160, 0.15); color: #f472b6; border: 1px solid rgba(224,64,160,0.25); }
+  .pill-gold   { background: rgba(212, 168, 64, 0.12); color: #fbbf24; border: 1px solid rgba(212,168,64,0.2); }
+  .pill-teal   { background: rgba(45, 212, 191, 0.1);  color: #2dd4bf; border: 1px solid rgba(45,212,191,0.2); }
+
+  /* brunch selector */
+  .brunch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+
+  .brunch-btn {
+    padding: 10px 14px; border-radius: 11px;
+    border: 2px solid rgba(168,85,247,0.2);
+    background: var(--card2); cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--sub); transition: all 0.2s; text-align: center;
+  }
+
+  .brunch-btn .bprice {
+    display: block; font-size: 19px; font-weight: 700;
+    margin-top: 3px; color: var(--text);
+  }
+
+  .brunch-btn.active {
+    border-color: var(--purple);
+    background: rgba(168, 85, 247, 0.12);
+    color: #c084fc;
+  }
+
+  .brunch-btn.active .bprice { color: #c084fc; }
+
+  /* ── Summary ─────────────────────────────── */
+  .summary {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 26px 22px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  }
+
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #c084fc;
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
+  }
+
+  .srow {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13.5px; gap: 12px;
+  }
+
+  .srow:last-of-type { border-bottom: none; }
+
+  .slabel {
+    color: var(--sub); display: flex; align-items: center; gap: 6px; flex: 1;
+  }
+
+  .stag {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 1px 6px; border-radius: 4px;
+    background: rgba(212,168,64,0.15); color: var(--gold);
+  }
+
+  .samount { font-weight: 600; color: var(--text); flex-shrink: 0; }
+  .samount.free   { color: var(--teal); }
+  .samount.approx { color: var(--gold); }
+
+  /* toggle */
+  .trow {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); gap: 16px;
+  }
+
+  .tlabel { font-size: 13px; color: var(--sub); font-style: italic; }
+
+  .sw { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+  .sw input { opacity: 0; width: 0; height: 0; position: absolute; }
+
+  .track {
+    position: absolute; inset: 0;
+    background: #2a2a40; border-radius: 24px;
+    cursor: pointer; transition: background 0.25s;
+  }
+
+  .thumb {
+    position: absolute; width: 18px; height: 18px;
+    background: #6a6a8a; border-radius: 50%;
+    top: 3px; left: 3px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    transition: transform 0.25s, background 0.25s;
+    pointer-events: none;
+  }
+
+  .sw input:checked ~ .track  { background: rgba(168, 85, 247, 0.4); }
+  .sw input:checked ~ .thumb  { transform: translateX(20px); background: var(--purple); }
+
+  .sep {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(168,85,247,0.4), transparent);
+    margin: 12px 0;
+  }
+
+  .total-row {
+    display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0 2px;
+  }
+
+  .total-label { font-size: 14px; font-weight: 600; color: var(--sub); }
+
+  .total-amount {
+    font-family: 'Cinzel', serif;
+    font-size: 32px; font-weight: 700;
+    background: linear-gradient(135deg, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .est-note {
+    background: rgba(212, 168, 64, 0.08);
+    border-left: 3px solid var(--gold-d);
+    border-radius: 0 10px 10px 0;
+    padding: 11px 14px;
+    font-size: 11.5px;
+    color: #a08050;
+    line-height: 1.65;
+    margin-top: 14px;
+  }
+
+  /* venue address */
+  .ev-addr {
+    margin-bottom: 10px;
+  }
+
+  .ev-addr a {
+    font-size: 11.5px;
+    color: var(--purple);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+  }
+
+  .ev-addr a:hover { opacity: 1; text-decoration: underline; }
+
+  /* footer */
+  .footer { text-align: center; margin-top: 32px; font-size: 22px; letter-spacing: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="header-badge">🦇 Hen Do Weekend 🦇</div>
+    <h1>Olivia's Brighton Hen</h1>
+    <div class="where">Brighton · July 11 · 2026</div>
+  </div>
+
+  <div class="ornament">🦇 &nbsp; ✦ &nbsp; 🦇</div>
+
+  <div class="timeline">
+    <div class="timeline-rail"></div>
+
+    <div class="event">
+      <div class="dot">🚂</div>
+      <div class="card">
+        <div class="ev-time">Before 12:00</div>
+        <div class="ev-title">Arrival & Hello</div>
+        <div class="ev-desc">Meet Olivia & Charlie by the station — train arrives 11:09. Everyone gets a disposable camera 📷 and a photo bingo card 🎯</div>
+        <div class="ev-addr"><a href="https://maps.google.com/?q=Brighton+Station+Queens+Road+Brighton+BN1+3XP" target="_blank">📍 Brighton Station, Queen's Road, BN1 3XP</a></div>
+        <div class="pills">
+          <span class="pill pill-purple">🚂 Train split — £3.67 each (£33 ÷ 9)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="dot">🥂</div>
+      <div class="card">
+        <div class="ev-time">12:00 – 14:00</div>
+        <div class="ev-title">Bottomless Brunch — The Mesmerist</div>
+        <div class="ev-desc">Pick your vibe — your choice updates the total below.</div>
+        <div class="ev-addr"><a href="https://maps.google.com/?q=1-3+Prince+Albert+Street+Brighton+BN1+1HE" target="_blank">📍 1–3 Prince Albert Street, BN1 1HE</a></div>
+        <div class="brunch-grid">
+          <button class="brunch-btn active" id="btn-alc" onclick="setBrunch('alcoholic')">
+            🍾 Alcoholic
+            <span class="bprice">£45.00</span>
+          </button>
+          <button class="brunch-btn" id="btn-non" onclick="setBrunch('nonalcoholic')">
+            🧃 Non-alcoholic
+            <span class="bprice">£35.00</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="dot">🎧</div>
+      <div class="card">
+        <div class="ev-time">14:00 – 15:00</div>
+        <div class="ev-title">Silent Disco — Footloose</div>
+        <div class="ev-desc">A walking party through the Lanes and down to the beach. Headphones on. The world disappears. 🕺💃</div>
+        <div class="ev-addr"><a href="https://maps.google.com/?q=Queen+Victoria+Statue+Victoria+Gardens+Brighton" target="_blank">📍 Meet at Queen Victoria Statue, Victoria Gardens</a></div>
+        <div class="pills">
+          <span class="pill pill-purple">🎧 £33.00 per person</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="dot">🏠</div>
+      <div class="card">
+        <div class="ev-time">15:00 – 19:00</div>
+        <div class="ev-title">Airbnb — Snacks, Drinks & Canvas Painting</div>
+        <div class="ev-desc">Snacks and drinks entirely covered by Olivia's mum — huge thank you 🙏 Canvas painting + games and decorations.</div>
+        <div class="ev-addr"><a href="https://goo.gl/maps/TYrH4MqiQtTpXhRx7?g_st=ac" target="_blank">📍 View on Google Maps</a></div>
+        <div class="pills">
+          <span class="pill pill-teal">🍕 Snacks & drinks — FREE</span>
+          <span class="pill pill-purple">🎨 Canvas + paint £3.33 per person | £30 split 9 ways</span>
+          <span class="pill pill-purple">🎗️ Decorations £2.22 per person | £20 split 9 ways</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="dot">🍽️</div>
+      <div class="card">
+        <div class="ev-time">19:30 – 22:00</div>
+        <div class="ev-title">Dinner at Shelter Hall — Private Room</div>
+        <div class="ev-desc">Seafront food hall with 7 independent kitchens — scan the QR at your table, order from whichever kitchen you fancy, pay on your own card. We split Olivia's dinner between us; estimated at £25 (a main + a drink).</div>
+        <div class="ev-addr"><a href="https://maps.google.com/?q=152-154+Kings+Road+Arches+Brighton+BN1+1NB" target="_blank">📍 152–154 Kings Road Arches, BN1 1NB</a></div>
+        <div class="pills">
+          <span class="pill pill-purple">🍕 Your own dinner — pay on the night</span>
+          <span class="pill pill-gold">👰 Olivia's dinner est. £25, split 9 ways ≈ £2.78 each</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="dot">🪩</div>
+      <div class="card">
+        <div class="ev-time">22:00 onwards</div>
+        <div class="ev-title">Volks — Jungle Mania</div>
+        <div class="ev-desc">Time to get glam and dark. Option to split Olivia's entry — toggle this in the summary below.</div>
+        <div class="ev-addr"><a href="https://maps.google.com/?q=3+The+Colonnade+Madeira+Drive+Brighton+BN2+1PS" target="_blank">📍 3 The Colonnade, Madeira Drive, BN2 1PS</a></div>
+        <div class="pills">
+          <span class="pill pill-purple">🎶 £14.55 per person</span>
+          <span class="pill pill-rose">👰 Olivia's ticket — toggle below</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="dot">🌙</div>
+      <div class="card">
+        <div class="ev-time">Late night</div>
+        <div class="ev-title">Airbnb Stayover</div>
+        <div class="ev-desc">Optional contribution to cover Olivia's spot at the Airbnb — splitting the £58.75 between the 9 of us.</div>
+        <div class="ev-addr"><a href="https://goo.gl/maps/TYrH4MqiQtTpXhRx7?g_st=ac" target="_blank">📍 View on Google Maps</a></div>
+        <div class="pills">
+          <span class="pill pill-purple">🌙 £6.53 each (£58.75 ÷ 9)</span>
+          <span class="pill pill-rose">👰 Olivia's spot — toggle below</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-title">🕸️ &nbsp; Cost Summary &nbsp; 🕸️</div>
+
+    <div class="srow">
+      <span class="slabel">🚂 Train (split 9 ways)</span>
+      <span class="samount">£3.67</span>
+    </div>
+    <div class="srow">
+      <span class="slabel" id="brunch-label">🍾 Bottomless Brunch <span class="stag">alcoholic</span></span>
+      <span class="samount" id="brunch-cost">£45.00</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">🎧 Silent Disco</span>
+      <span class="samount">£33.00</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">🎨 Canvas painting <span class="stag">est.</span></span>
+      <span class="samount">£3.33</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">🎗️ Decorations</span>
+      <span class="samount">£2.22</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">🍕 Snacks & drinks</span>
+      <span class="samount free">FREE 🙏</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">🍽️ Your dinner at Shelter Hall <span class="stag">est.</span></span>
+      <span class="samount approx">~£20.00</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">👰 Olivia's dinner split <span class="stag">est.</span></span>
+      <span class="samount approx">~£2.78</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">🪩 Volks entry</span>
+      <span class="samount">£14.55</span>
+    </div>
+
+    <div class="trow">
+      <span class="tlabel">➕ Cover Olivia's Volks ticket too? (÷9 = +£1.62)</span>
+      <label class="sw">
+        <input type="checkbox" id="toggle-volks" onchange="recalculate()">
+        <div class="track"></div>
+        <div class="thumb"></div>
+      </label>
+    </div>
+
+    <div class="trow">
+      <span class="tlabel">➕ Contribute to Olivia's Airbnb spot? (÷9 = +£6.53)</span>
+      <label class="sw">
+        <input type="checkbox" id="toggle-airbnb" onchange="recalculate()">
+        <div class="track"></div>
+        <div class="thumb"></div>
+      </label>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="total-row">
+      <span class="total-label">Your estimated total</span>
+      <span class="total-amount" id="total-display">—</span>
+    </div>
+
+    <div class="est-note">
+      📌 <strong>Estimates:</strong> 10 canvases est. ~£15, split 9 ways. Olivia's dinner estimated at £25 (main + drink), split 9 ways. Your own dinner estimated at £20 — adjust for what you're likely to order! Toggle Olivia's Volks and Airbnb above for the optional extras.
+    </div>
+  </div>
+
+  <div class="footer">🦇 🕷️ 🌑 🕷️ 🦇</div>
+</div>
+
+<script>
+  let brunch = 'alcoholic';
+
+  function setBrunch(type) {
+    brunch = type;
+    document.getElementById('btn-alc').classList.toggle('active', type === 'alcoholic');
+    document.getElementById('btn-non').classList.toggle('active', type === 'nonalcoholic');
+    const labelEl = document.getElementById('brunch-label');
+    const costEl  = document.getElementById('brunch-cost');
+    if (type === 'alcoholic') {
+      labelEl.innerHTML = '🍾 Bottomless Brunch <span class="stag">alcoholic</span>';
+      costEl.textContent = '£45.00';
+    } else {
+      labelEl.innerHTML = '🧃 Bottomless Brunch <span class="stag">non-alcoholic</span>';
+      costEl.textContent = '£35.00';
+    }
+    recalculate();
+  }
+
+  function recalculate() {
+    const train       = 3.67;
+    const brunchCost  = brunch === 'alcoholic' ? 45.00 : 35.00;
+    const disco       = 33.00;
+    const canvases    = 30 / 9;
+    const decorations = 20 / 9;
+    const ownDinner   = 20.00;
+    const oliviaDin   = 25 / 9;
+    const volks       = 14.55;
+    const oliviaVolks  = document.getElementById('toggle-volks').checked ? (14.55 / 9) : 0;
+    const airbnb       = document.getElementById('toggle-airbnb').checked ? 6.53 : 0;
+    const total = train + brunchCost + disco + canvases + decorations + ownDinner + oliviaDin + volks + oliviaVolks + airbnb;
+    document.getElementById('total-display').textContent = '~£' + total.toFixed(2);
+  }
+
+  recalculate();
+</script>
+</body>
+</html>
